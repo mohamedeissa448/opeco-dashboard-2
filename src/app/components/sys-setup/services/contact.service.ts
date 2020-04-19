@@ -13,6 +13,9 @@ export class ContactService {
     const formData: FormData = new FormData();
     formData.append("image", image, image.name);
     formData.append("address", body.address);
+    formData.append("email", body.email);
+    formData.append("phone", body.phone);
+    formData.append("fax", body.fax);
     const headers = new HttpHeaders({
       Authorization: `bearer ${localStorage.getItem("token")}`
     });

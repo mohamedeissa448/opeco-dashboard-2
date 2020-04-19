@@ -22,6 +22,52 @@
       <p *ngIf="address.invalid && address.touched" class="alert alert-danger">
         Please,provide an address
       </p>
+      <div class="form-group first">
+        <input
+          required
+          #phone="ngModel"
+          class="address"
+          ngModel
+          name="phone"
+          placeholder="Phone*"
+          style="width: 50%;"
+          type="tel"
+        />
+      </div>
+      <p *ngIf="phone.invalid && phone.touched" class="alert alert-danger">
+        Please,provide a phone number
+      </p>
+
+      <div class="form-group first">
+        <input
+          required
+          #email="ngModel"
+          class="address"
+          ngModel
+          name="email"
+          placeholder="Email*"
+          style="width: 50%;"
+          type="email"
+        />
+      </div>
+      <p *ngIf="email.invalid && email.touched" class="alert alert-danger">
+        Please,provide an email
+      </p>
+
+      <div class="form-group first">
+        <input
+          required
+          #fax="ngModel"
+          class="address"
+          ngModel
+          name="fax"
+          placeholder="Fax*"
+          style="width: 50%;"
+        />
+      </div>
+      <p *ngIf="fax.invalid && fax.touched" class="alert alert-danger">
+        Please,provide a fax
+      </p>
 
       <div class="custom-file">
         <input

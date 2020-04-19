@@ -26,7 +26,10 @@ export class ContactComponent {
     console.log("upload is running");
     this.contactService
       .upload(this.imageToUpload, {
-        address: f.address
+        address: f.address,
+        phone: f.phone,
+        email: f.email,
+        fax: f.fax
       })
       .subscribe(
         data => {
