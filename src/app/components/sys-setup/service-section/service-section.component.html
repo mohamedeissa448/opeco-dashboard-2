@@ -1,0 +1,90 @@
+<div class="search-div">
+  <button mat-raised-button (click)="onAdd()">
+    <mat-icon>add</mat-icon>Add
+  </button>
+  <mat-form-field class="search-form-field">
+    <input
+      matInput
+      [(ngModel)]="searchKey"
+      placeholder="Search By Title"
+      autocomplete="off"
+      (keyup)="applyFilter()"
+    />
+    <button
+      *ngIf="searchKey"
+      mat-button
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="onSearchClear()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+<div class="rxp-data-table-bg">
+  <table mat-table [dataSource]="services" class="mat-elevation-z8" matSort>
+    <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="Title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.title }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Content">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Content</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.content }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Image">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
+      <td mat-cell *matCellDef="let element">
+        <img
+          class="serviceImage"
+          [src]="'http://localhost:3000/images/' + element.imageUrl"
+        />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button (click)="onEdit(element)">edit</button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="loading">
+      <mat-footer-cell *matFooterCellDef colspan="6">
+        Loading data...
+      </mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="noData">
+      <mat-footer-cell *matFooterCellDef colspan="6">
+        No data.
+      </mat-footer-cell>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <mat-footer-row
+      *matFooterRowDef="['loading']"
+      [ngClass]="{ hide: services != null }"
+    ></mat-footer-row>
+    <mat-footer-row
+      *matFooterRowDef="['noData']"
+      [ngClass]="{
+        hide: !(services && services.data != null && services.data.length == 0)
+      }"
+    ></mat-footer-row>
+  </table>
+</div>
+<mat-paginator
+  [length]="100"
+  [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  showFirstLastButtons
+>
+</mat-paginator>

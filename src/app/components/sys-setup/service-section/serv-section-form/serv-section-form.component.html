@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+<form [formGroup]="sectionServicesFormService.form" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <img
+      *ngIf="title == 'Edit A Service'"
+      class="serviceImage"
+      [src]="'http://localhost:3000/images/' + imageUrl"
+    />
+    <br />
+    <mat-form-field>
+      <input matInput placeholder="Title*" formControlName="title" />
+      <mat-error>Please provide a title</mat-error>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <mat-form-field style="width: 100%;">
+      <textarea
+        style="line-height: 1.4em;"
+        rows="6"
+        matInput
+        placeholder="Content*"
+        formControlName="content"
+      ></textarea>
+      <mat-error>Please provide a content for the service</mat-error>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <div class="custom-file">
+      <input
+        #image
+        required
+        type="file"
+        class="custom-file-input"
+        id="file"
+        name="image"
+        accept="image/x-png,image/gif,image/jpeg,image/jpg"
+        (change)="handleImageFileInput($event.target.files)"
+      />
+      <label class="custom-file-label" for="customFile">
+        <p *ngIf="isImageChosed == false">choose an image:</p>
+        <p *ngIf="isImageChosed == true">
+          Image chosed is: {{ this.imageToUpload.name }}
+        </p>
+      </label>
+    </div>
+  </mat-dialog-content>
+  <p *ngIf="showErrorMSg == true" class="alert alert-danger">
+    You should choose an image
+  </p>
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+    <button
+      mat-raised-button
+      mat-primary
+      type="submit"
+      [disabled]="
+        sectionServicesFormService.form.invalid && isImageChosed == true
+      "
+    >
+      Submit
+    </button>
+  </mat-dialog-actions>
+</form>

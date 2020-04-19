@@ -1,0 +1,60 @@
+<div class="lists row">
+  <div class="col-md-12 col-lg-6 col-xxxl-12">
+    <form
+      id="uploadForm"
+      #f="ngForm"
+      enctype="multipart/form-data"
+      method="post"
+    >
+      <div class="form-group first">
+        <textarea
+          required
+          #address="ngModel"
+          class="address"
+          nbInput
+          ngModel
+          name="address"
+          placeholder="Address*"
+          style="width: 50%;"
+          rows="10"
+        ></textarea>
+      </div>
+      <p *ngIf="address.invalid && address.touched" class="alert alert-danger">
+        Please,provide an address
+      </p>
+
+      <div class="custom-file">
+        <input
+          required
+          type="file"
+          class="custom-file-input"
+          id="file"
+          ngModel
+          #image="ngModel"
+          name="image"
+          accept="image/x-png,image/gif,image/jpeg"
+          (change)="handleImageFileInput($event.target.files, image)"
+        />
+        <label class="custom-file-label" for="customFile">
+          <p *ngIf="isImageChosed == false">choose an image for Map:</p>
+          <p *ngIf="isImageChosed == true">
+            Image chosed is: {{ this.imageToUpload.name }}
+          </p>
+        </label>
+      </div>
+      <p *ngIf="image.invalid && image.touched" class="alert alert-danger">
+        Please,provide an image
+      </p>
+
+      <button
+        class="btn btn-primary"
+        type="submit"
+        status="success"
+        (click)="upload(f.value)"
+        [disabled]="f.invalid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

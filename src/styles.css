@@ -1,0 +1,110 @@
+/* You can add global styles to this file, and also import other style files */
+.echart-line-chart {
+  height: 3em;
+  width: 8em;
+}
+.echart-line-chart-area {
+  height: 50px;
+}
+.fix-h-292 {
+  height: 292px !important;
+}
+.echart-doughnut {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.cwidget-scroll {
+  height: 260px;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sidebar {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.sidebar::-webkit-scrollbar,
+.cwidget-scroll::-webkit-scrollbar {
+  /* WebKit */
+  width: 0px;
+}
+.parsley-errors-list {
+  list-style-type: none;
+  line-height: 0.9em;
+  padding-left: 5px;
+}
+.form-control,
+.custom-file-input {
+  height: auto;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+/* notification */
+snack-bar-container {
+  background-color: #5cb85c;
+  color: #fff;
+}
+
+snack-bar-container.notification simple-snack-bar {
+  font-size: 18px !important;
+  font-weight: bold;
+}
+/*table*/
+.hide {
+  display: none;
+}
+mat-footer-row mat-footer-cell {
+  justify-content: center;
+  font-style: italic;
+}
+table {
+  width: 100%;
+}
+.search-div {
+  margin: 10px;
+}
+.search-form-field {
+  width: 60%;
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+.search-form-field div.mat-form-field-underline {
+  display: none;
+}
+.search-form-field div.mat-form-field-infex {
+  border-top: 0px;
+}
+.search-form-field div.mat-form-field-wrapper {
+  padding-bottom: 0px;
+}
+.search-form-field div.mat-form-field-suffix button {
+  height: 32px;
+  width: 32px;
+}
+mat-form-field {
+  width: 25em;
+}
+.mat-form-field-wrapper {
+  margin-bottom: 1em;
+}
+mat-slide-toggle {
+  /*form status*/
+  margin-left: 2em;
+}
+/********** authentication Forms ***/
+.form-control.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+/**************   all tables             ****/

@@ -1,0 +1,15 @@
+.serviceImage {
+  display: block;
+}
+@media (max-width: 768px) {
+  .serviceImage {
+    max-width: 100%;
+    height: auto;
+  }
+}
+@media (min-width: 768px) {
+  .serviceImage {
+    max-width: 60%;
+    height: auto;
+  }
+}

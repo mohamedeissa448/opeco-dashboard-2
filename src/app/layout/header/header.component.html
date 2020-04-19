@@ -1,0 +1,82 @@
+<nav class="navbar navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-btn">
+      <button
+        type="button"
+        class="btn-toggle-offcanvas"
+        (click)="toggleSideMenu()"
+      >
+        <i class="lnr lnr-menu fa fa-bars"></i>
+      </button>
+    </div>
+
+    <div class="navbar-brand">
+      <a *ngIf="!darkClass" [routerLink]="['/']"
+        ><img
+          src="assets/images/logo.png"
+          alt="Opeco Logo"
+          class="img-responsive logo"
+      /></a>
+
+      <a *ngIf="darkClass" [routerLink]="['/']"
+        ><img
+          src="assets/images/logo-white.svg"
+          alt="Lucid Logo"
+          class="img-responsive logo"
+      /></a>
+    </div>
+
+    <div class="navbar-right">
+      <div class="navbar-form search-form rxp-title-form">
+        <div class="row">
+          <div class="col-2">
+            <a
+              href="javascript:void(0);"
+              class="btn btn-xs btn-link btn-toggle-fullwidth rxp-toggle-side-bar"
+              (click)="toggleFullWidth()"
+            >
+              <i
+                class="fa fa-angle-left rxp-left-menu-arrow"
+                *ngIf="sidebarVisible"
+              ></i>
+              <i class="fa fa-bars rxp-menu-header-icon"></i>
+              <i
+                class="fa fa-angle-right rxp-right-menu-arrow"
+                *ngIf="!sidebarVisible"
+              ></i>
+            </a>
+          </div>
+          <div class="col-10">
+            <h4>{{ SelectedSubMenu }}</h4>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a [routerLink]="['/']"><i class="icon-home"></i></a>
+              </li>
+              <li class="breadcrumb-item">{{ SelectedMainMenu }}</li>
+              <li class="breadcrumb-item active">{{ SelectedSubMenu }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/admin']"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Widgets</li>
+                <li class="breadcrumb-item active">Widgets Weather</li>
+            </ul> -->
+      <div id="navbar-menu">
+        <ul class="nav navbar-nav">
+          <li
+            *ngIf="authService.isLogedIn()"
+            (click)="authService.logOut()"
+            rxp-title-form="logout"
+          >
+            <a class="icon-menu d-none d-sm-block" style="cursor: pointer;"
+              ><i class="icon-logout" title="logout"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

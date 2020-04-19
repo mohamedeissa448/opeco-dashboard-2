@@ -1,0 +1,116 @@
+<div
+  id="left-sidebar"
+  class="sidebar"
+  *ngIf="sidebarVisible"
+  style="overflow-y:scroll;"
+>
+  <div class="sidebar-scroll">
+    <div class="user-account">
+      <img
+        src="assets/images/user.png"
+        class="rounded-circle user-photo"
+        alt="User Profile Picture"
+      />
+      <div class="dropdown" ngbDropdown>
+        <span>Welcome,</span>
+        <a
+          href="javascript:void(0);"
+          class="dropdown-toggle user-name"
+          ngbDropdownToggle
+          ><strong *ngIf="authService.isLogedIn()">{{
+            authService.currentUser.username
+          }}</strong></a
+        >
+        <ul class="dropdown-menu dropdown-menu-right account" ngbDropdownMenu>
+          <li class="divider"></li>
+          <li (click)="authService.logOut()">
+            <a><i class="icon-power"></i>Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ active: navTab == 'menu' }"
+          (click)="changeNavTab('menu')"
+          >Menu</a
+        >
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content p-l-0 p-r-0">
+      <div
+        class="tab-pane"
+        id="menu"
+        [ngClass]="{ active: navTab == 'menu' || !navTab }"
+      >
+        <nav id="left-sidebar-nav" class="sidebar-nav">
+          <ul id="main-menu" class="metismenu">
+            <li
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="{ active: currentActiveMenu == 'dashboard' }"
+            >
+              <a [routerLink]="['/dashboard/index']"
+                ><i class="icon-home"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+
+            <li [ngClass]="{ active: currentActiveMenu == 'sys-setup' }">
+              <a class="has-arrow" (click)="activeInactiveMenu('sys-setup')"
+                ><i class="icon-settings"></i> <span>Setup</span></a
+              >
+              <ul *ngIf="currentActiveMenu == 'sys-setup'">
+                <li
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                >
+                  <a [routerLink]="['/sys-setup/manage-home-section']"
+                    >Home Section</a
+                  >
+                </li>
+                <li
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                >
+                  <a [routerLink]="['/sys-setup/manage-aboutUs-section']"
+                    >About Us Section</a
+                  >
+                </li>
+                <li
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                >
+                  <a [routerLink]="['/sys-setup/manage-services-section']"
+                    >Services Section</a
+                  >
+                </li>
+                <li
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                >
+                  <a [routerLink]="['/sys-setup/manage-projects-section']"
+                    >Projects Section</a
+                  >
+                </li>
+                <li
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                >
+                  <a [routerLink]="['/sys-setup/manage-contact-section']"
+                    >Contact Section</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

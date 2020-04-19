@@ -1,0 +1,11 @@
+.col-md-12 {
+  margin: 5em auto;
+}
+@media (max-width: 990px) {
+  .first {
+    text-align: center;
+  }
+  .second {
+    text-align: center;
+  }
+}
