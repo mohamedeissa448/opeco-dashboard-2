@@ -1,3 +1,4 @@
+import { AnalyticsConfigurationComponent } from "./analytics-configuration/analytics-configuration.component";
 import { ContactComponent } from "./contact/contact.component";
 import { projectsSectionComponent } from "./projects/projects.component";
 import { SysSetupAuthGuardService } from "./../../authentication/services/sys-setup-auth-guard.service";
@@ -50,6 +51,16 @@ const routes: Routes = [
         component: ContactComponent,
         data: {
           title: "RxP CMS Manager » System Setup » Contact Section"
+        },
+        canActivate: [AuthGuardService]
+      },
+
+      {
+        path: "manage-analytics-configuration-section",
+        component: AnalyticsConfigurationComponent,
+        data: {
+          title:
+            "RxP CMS Manager » System Setup » Analytics Configuration Section"
         },
         canActivate: [AuthGuardService]
       }

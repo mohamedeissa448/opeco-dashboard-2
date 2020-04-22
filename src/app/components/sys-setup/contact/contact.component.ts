@@ -1,3 +1,4 @@
+import { settings } from "./../../../config";
 import { ContactService } from "./../services/contact.service";
 import { Component, OnInit } from "@angular/core";
 import { NotificationsService } from "../services/notifications.service";
@@ -8,28 +9,50 @@ import { MatSnackBarConfig } from "@angular/material";
   templateUrl: "./contact.component.html",
   styleUrls: ["./contact.component.css"]
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   imageToUpload: File = null;
   isImageChosed: boolean = false;
+  contact: object = {};
+  serverUrl: string = "";
   constructor(
     private contactService: ContactService,
     private notificationService: NotificationsService
   ) {}
-  handleImageFileInput(files: FileList, image) {
+  ngOnInit() {
+    this.serverUrl = settings.serverUrl;
+    this.getData();
+  }
+  getData() {
+    this.contactService.get().subscribe(
+      (response: any) => {
+        if (response.contact) {
+          this.contact = response.contact;
+          console.log("this.contact", this.contact);
+        } else {
+        }
+      },
+      error => {
+        alert("Unexpected error has happened,Please try again later");
+        console.log("error", error);
+      }
+    );
+  }
+  /* handleImageFileInput(files: FileList, image) {
     this.imageToUpload = files.item(0);
     console.log("this.imageToUpload", this.imageToUpload);
     console.log("before", this.isImageChosed);
     this.isImageChosed = this.isImageChosed == true ? false : true;
-  }
+  }*/
 
   upload(f) {
     console.log("upload is running");
     this.contactService
-      .upload(this.imageToUpload, {
+      .upload({
         address: f.address,
         phone: f.phone,
         email: f.email,
-        fax: f.fax
+        fax: f.fax,
+        mapUrl: f.mapUrl
       })
       .subscribe(
         data => {

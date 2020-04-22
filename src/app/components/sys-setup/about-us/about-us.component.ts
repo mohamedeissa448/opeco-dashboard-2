@@ -1,5 +1,6 @@
+import { settings } from "./../../../config";
 import { AboutUsService } from "./../services/aboutUs.service";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NotificationsService } from "../services/notifications.service";
 
 @Component({
@@ -7,15 +8,36 @@ import { NotificationsService } from "../services/notifications.service";
   templateUrl: "about-us.component.html",
   styleUrls: ["about-us.component.css"]
 })
-export class AboutUsComponent {
+export class AboutUsComponent implements OnInit {
   imageToUpload: File = null;
   pdfToUpload: File = null;
   isImageChosed: boolean = false;
   isPdfChosed: boolean = false;
+  serverUrl: String;
+  aboutUs: object = {};
+
   constructor(
     private aboutUsService: AboutUsService,
     private notificationService: NotificationsService
   ) {}
+  ngOnInit() {
+    this.serverUrl = settings.serverUrl;
+    this.getData();
+  }
+  getData() {
+    this.aboutUsService.get().subscribe(
+      (response: any) => {
+        if (response.aboutUs) {
+          this.aboutUs = response.aboutUs;
+        } else {
+        }
+      },
+      error => {
+        alert("Unexpected error has happened,Please try again later");
+        console.log("error", error);
+      }
+    );
+  }
   handleImageFileInput(files: FileList, image) {
     this.imageToUpload = files.item(0);
     console.log("this.imageToUpload", this.imageToUpload);
@@ -40,6 +62,7 @@ export class AboutUsComponent {
           if (data) {
             console.log("all success");
             this.notificationService.success("::  All Uploaded Successfully");
+            this.getData();
           }
         },
         error => {

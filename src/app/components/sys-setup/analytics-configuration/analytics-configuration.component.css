@@ -1,0 +1,13 @@
+.d-flex {
+  margin-top: 5em;
+}
+form {
+  text-align: center;
+  width: 100%;
+}
+.first {
+  width: 100%;
+}
+textarea {
+  width: 80%;
+}

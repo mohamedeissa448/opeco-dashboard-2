@@ -25,6 +25,7 @@ import { serviceSectionComponent } from "./service-section/service-section.compo
 import { serviceSectionFormComponent } from "./service-section/serv-section-form/serv-section-form.component";
 import { projectsFormComponent } from "./projects/projects-form/projects-form.component";
 import { ContactComponent } from './contact/contact.component';
+import { AnalyticsConfigurationComponent } from './analytics-configuration/analytics-configuration.component';
 
 @NgModule({
   imports: [
@@ -56,7 +57,8 @@ import { ContactComponent } from './contact/contact.component';
     serviceSectionFormComponent,
     projectsSectionComponent,
     projectsFormComponent,
-    ContactComponent
+    ContactComponent,
+    AnalyticsConfigurationComponent
   ],
   entryComponents: [serviceSectionFormComponent, projectsFormComponent]
 })

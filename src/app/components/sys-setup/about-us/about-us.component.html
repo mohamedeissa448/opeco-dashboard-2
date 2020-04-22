@@ -1,4 +1,31 @@
 <div class="lists row">
+  <div class="imageContainer col">
+    <h3>Current Image:</h3>
+    <img
+      *ngIf="aboutUs.imageUrl && aboutUs.imageUrl != ''"
+      [src]="serverUrl + '/images/' + aboutUs.imageUrl"
+      alt="current about us image"
+      class="about-us"
+    />
+    <h5 *ngIf="!aboutUs.imageUrl || aboutUs.imageUrl == ''">
+      No Image yet uploaded
+    </h5>
+  </div>
+  <div class="pdfContainer col">
+    <h3>Current Pdf:</h3>
+    <a
+      [href]="serverUrl + '/images/' + aboutUs.pdfUrl"
+      alt="current about us pdf"
+      class="about-us"
+      target="_blank"
+      *ngIf="aboutUs.pdfUrl != ''"
+    >
+      Show Current FEOpeco portofolio
+    </a>
+    <h5 *ngIf="!aboutUs.pdfUrl || aboutUs.pdfUrl == ''">No Pdf yet uploaded</h5>
+  </div>
+  <div class="w-100"></div>
+
   <div class="col-md-12 col-lg-6 col-xxxl-12">
     <form
       id="uploadForm"
@@ -13,6 +40,7 @@
           type="text"
           nbInput
           ngModel
+          [(ngModel)]="aboutUs.title"
           #title="ngModel"
           name="title"
           fullWidth
@@ -30,6 +58,7 @@
           class="content"
           nbInput
           ngModel
+          [(ngModel)]="aboutUs.content"
           name="content"
           placeholder="Content"
           style="width: 70%;"

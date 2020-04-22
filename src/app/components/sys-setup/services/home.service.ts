@@ -25,4 +25,11 @@ export class HomeService {
       })
     );
   }
+  getCurrentImageUrl() {
+    const headers = new HttpHeaders({
+      Authorization: `bearer ${localStorage.getItem("token")}`
+    });
+    const endPoint = `${settings.serverUrl}/admin/home/getBannerImage`;
+    return this.http.get(endPoint, { headers: headers });
+  }
 }

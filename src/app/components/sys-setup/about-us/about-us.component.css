@@ -9,3 +9,13 @@
     text-align: center;
   }
 }
+div.imageContainer {
+  width: 400px;
+}
+.about-us {
+  max-width: 100%;
+  height: auto;
+}
+.pdfContainer a:hover {
+  color: #49c5b6;
+}

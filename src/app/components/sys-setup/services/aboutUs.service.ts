@@ -27,4 +27,11 @@ export class AboutUsService {
       })
     );
   }
+  get() {
+    const headers = new HttpHeaders({
+      Authorization: `bearer ${localStorage.getItem("token")}`
+    });
+    const endPoint = `${settings.serverUrl}/admin/about-us/get`;
+    return this.http.get(endPoint, { headers: headers });
+  }
 }

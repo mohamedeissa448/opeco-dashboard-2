@@ -13,6 +13,7 @@
           class="address"
           nbInput
           ngModel
+          [(ngModel)]="contact.address"
           name="address"
           placeholder="Address*"
           style="width: 50%;"
@@ -27,6 +28,7 @@
           required
           #phone="ngModel"
           class="address"
+          [(ngModel)]="contact.phone"
           ngModel
           name="phone"
           placeholder="Phone*"
@@ -43,6 +45,7 @@
           required
           #email="ngModel"
           class="address"
+          [(ngModel)]="contact.email"
           ngModel
           name="email"
           placeholder="Email*"
@@ -60,6 +63,7 @@
           #fax="ngModel"
           class="address"
           ngModel
+          [(ngModel)]="contact.fax"
           name="fax"
           placeholder="Fax*"
           style="width: 50%;"
@@ -69,7 +73,23 @@
         Please,provide a fax
       </p>
 
-      <div class="custom-file">
+      <div class="form-group first">
+        <input
+          required
+          #mapUrl="ngModel"
+          class="address"
+          ngModel
+          [(ngModel)]="contact.mapUrl"
+          name="mapUrl"
+          placeholder="Map URL*"
+          style="width: 50%;"
+        />
+      </div>
+      <p *ngIf="fax.invalid && fax.touched" class="alert alert-danger">
+        Please,provide a map url
+      </p>
+
+      <!--<div class="custom-file">
         <input
           required
           type="file"
@@ -91,7 +111,7 @@
       <p *ngIf="image.invalid && image.touched" class="alert alert-danger">
         Please,provide an image
       </p>
-
+    -->
       <button
         class="btn btn-primary"
         type="submit"

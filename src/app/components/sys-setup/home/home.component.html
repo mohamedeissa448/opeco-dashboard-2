@@ -1,5 +1,17 @@
 <div class="row">
   <div class="col-md-12">
+    <div class="imageContainer">
+      <h3>Current Image:</h3>
+      <img
+        *ngIf="currentImageUrl && currentImageUrl != ''"
+        [src]="serverUrl + '/images/' + currentImageUrl"
+        alt="current banner image"
+        class="bannerImage"
+      />
+      <h5 *ngIf="!currentImageUrl || currentImageUrl == ''">
+        No Image Yet Uploaded
+      </h5>
+    </div>
     <div class="d-flex justify-content-center align-items-center row">
       <form
         id="uploadForm"
@@ -20,7 +32,7 @@
             (change)="handleFileInput($event.target.files)"
           />
           <label class="custom-file-label" for="customFile">
-            <p *ngIf="isImageChosed == false">choose an image:</p>
+            <p *ngIf="isImageChosed == false">choose another image:</p>
             <p *ngIf="isImageChosed == true">
               Image chosed is: {{ this.fileToUpload.name }}
             </p>

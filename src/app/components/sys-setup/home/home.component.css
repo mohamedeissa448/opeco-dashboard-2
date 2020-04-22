@@ -4,3 +4,13 @@
 button {
   margin-top: 1.3em;
 }
+div.imageContainer {
+  width: 700px;
+  margin: auto;
+}
+.bannerImage {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
