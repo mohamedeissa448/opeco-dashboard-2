@@ -35,10 +35,10 @@
           style="width: 50%;"
           type="tel"
         />
+        <p *ngIf="phone.invalid && phone.touched" class="alert alert-danger">
+          Please,provide a phone number
+        </p>
       </div>
-      <p *ngIf="phone.invalid && phone.touched" class="alert alert-danger">
-        Please,provide a phone number
-      </p>
 
       <div class="form-group first">
         <input
@@ -52,10 +52,10 @@
           style="width: 50%;"
           type="email"
         />
+        <p *ngIf="email.invalid && email.touched" class="alert alert-danger">
+          Please,provide an email
+        </p>
       </div>
-      <p *ngIf="email.invalid && email.touched" class="alert alert-danger">
-        Please,provide an email
-      </p>
 
       <div class="form-group first">
         <input
@@ -68,10 +68,10 @@
           placeholder="Fax*"
           style="width: 50%;"
         />
+        <p *ngIf="fax.invalid && fax.touched" class="alert alert-danger">
+          Please,provide a fax
+        </p>
       </div>
-      <p *ngIf="fax.invalid && fax.touched" class="alert alert-danger">
-        Please,provide a fax
-      </p>
 
       <div class="form-group first">
         <input
@@ -84,10 +84,10 @@
           placeholder="Map URL*"
           style="width: 50%;"
         />
+        <p *ngIf="mapUrl.invalid && mapUrl.touched" class="alert alert-danger">
+          Please,provide a map url
+        </p>
       </div>
-      <p *ngIf="fax.invalid && fax.touched" class="alert alert-danger">
-        Please,provide a map url
-      </p>
 
       <!--<div class="custom-file">
         <input
@@ -112,15 +112,25 @@
         Please,provide an image
       </p>
     -->
-      <button
-        class="btn btn-primary"
-        type="submit"
-        status="success"
-        (click)="upload(f.value)"
-        [disabled]="f.invalid"
-      >
-        Submit
-      </button>
+      <div class="form-group first">
+        <button
+          class="btn btn-primary submit"
+          type="submit"
+          status="success"
+          (click)="upload(f.value)"
+          [disabled]="f.invalid"
+        >
+          Submit
+        </button>
+        <a
+          class="btn btn-danger cancel"
+          type="button"
+          status="success"
+          routerLink="/dashboard/index"
+        >
+          Cancel
+        </a>
+      </div>
     </form>
   </div>
 </div>

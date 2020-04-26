@@ -13,3 +13,10 @@
     height: auto;
   }
 }
+/********* close button for model*********/
+.btn-dialog-close {
+  margin-left: auto;
+}
+.btn-dialog-close:hover {
+  color: red;
+}

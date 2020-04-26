@@ -25,9 +25,17 @@
           Please,provide an analytics configuration
         </p>
 
-        <button class="btn btn-primary" [disabled]="f.invalid">
+        <button class="btn btn-primary submit" [disabled]="f.invalid">
           Submit
         </button>
+        <a
+          class="btn btn-danger cancel"
+          type="button"
+          status="success"
+          routerLink="/dashboard/index"
+        >
+          Cancel
+        </a>
       </form>
     </div>
   </div>

@@ -30,9 +30,7 @@ export class serviceSectionFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.isImageChosed == false) {
-      this.showErrorMSg = true;
-    } else if (this.sectionServicesFormService.form.valid) {
+    if (this.sectionServicesFormService.form.valid) {
       //on add a service
       if (this.title === "Add New Service") {
         this.upload("Add");
@@ -52,7 +50,10 @@ export class serviceSectionFormComponent implements OnInit {
     this.imageToUpload = files.item(0);
     console.log("this.imageToUpload", this.imageToUpload);
     this.isImageChosed = this.isImageChosed == true ? false : true;
-    this.showErrorMSg = false;
+    if (this.imageToUpload) this.showErrorMSg = false;
+    else if (!this.imageToUpload) {
+      this.showErrorMSg = true;
+    }
   }
 
   upload(type: string) {

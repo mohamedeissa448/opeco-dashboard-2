@@ -1,5 +1,5 @@
 <div class="lists row">
-  <div class="imageContainer col">
+  <!-- <div class="imageContainer col">
     <h3>Current Image:</h3>
     <img
       *ngIf="aboutUs.imageUrl && aboutUs.imageUrl != ''"
@@ -25,7 +25,7 @@
     <h5 *ngIf="!aboutUs.pdfUrl || aboutUs.pdfUrl == ''">No Pdf yet uploaded</h5>
   </div>
   <div class="w-100"></div>
-
+-->
   <div class="col-md-12 col-lg-6 col-xxxl-12">
     <form
       id="uploadForm"
@@ -68,7 +68,18 @@
       <p *ngIf="content.invalid && content.touched" class="alert alert-danger">
         Please,provide a content
       </p>
-
+      <div class="imageContainer ">
+        <h3>Current Image:</h3>
+        <img
+          *ngIf="aboutUs.imageUrl && aboutUs.imageUrl != ''"
+          [src]="serverUrl + '/images/' + aboutUs.imageUrl"
+          alt="current about us image"
+          class="inline-image"
+        />
+        <h5 *ngIf="!aboutUs.imageUrl || aboutUs.imageUrl == ''">
+          No Image yet uploaded
+        </h5>
+      </div>
       <div class="custom-file">
         <input
           required
@@ -82,8 +93,8 @@
           (change)="handleImageFileInput($event.target.files, image)"
         />
         <label class="custom-file-label" for="customFile">
-          <p *ngIf="isImageChosed == false">choose an image:</p>
-          <p *ngIf="isImageChosed == true">
+          <p *ngIf="!this.imageToUpload">choose an image:</p>
+          <p *ngIf="this.imageToUpload">
             Image chosed is: {{ this.imageToUpload.name }}
           </p>
         </label>
@@ -91,6 +102,21 @@
       <p *ngIf="image.invalid && image.touched" class="alert alert-danger">
         Please,provide an image
       </p>
+      <div class="inline-pdf">
+        <h3>Current Pdf:</h3>
+        <a
+          [href]="serverUrl + '/images/' + aboutUs.pdfUrl"
+          alt="current about us pdf"
+          class="about-us"
+          target="_blank"
+          *ngIf="aboutUs.pdfUrl != ''"
+        >
+          Show Current FEOpeco portofolio
+        </a>
+        <h5 *ngIf="!aboutUs.pdfUrl || aboutUs.pdfUrl == ''">
+          No Pdf yet uploaded
+        </h5>
+      </div>
       <div class="custom-file">
         <input
           required
@@ -104,8 +130,8 @@
           (change)="handlePdfFileInput($event.target.files)"
         />
         <label class="custom-file-label" for="customFile">
-          <p *ngIf="isPdfChosed == false">choose a PDF:</p>
-          <p *ngIf="isPdfChosed == true">
+          <p *ngIf="!this.pdfToUpload">choose a PDF:</p>
+          <p *ngIf="this.pdfToUpload">
             PDF chosed is: {{ this.pdfToUpload.name }}
           </p>
         </label>
@@ -114,7 +140,7 @@
         Please,provide a PDF
       </p>
       <button
-        class="btn btn-primary"
+        class="btn btn-primary submit"
         type="submit"
         status="success"
         (click)="upload(f.value)"
@@ -122,6 +148,14 @@
       >
         Submit
       </button>
+      <a
+        class="btn btn-danger cancel"
+        type="button"
+        status="success"
+        routerLink="/dashboard/index"
+      >
+        Cancel
+      </a>
     </form>
   </div>
 </div>

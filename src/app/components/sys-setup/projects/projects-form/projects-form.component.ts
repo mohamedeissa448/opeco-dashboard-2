@@ -31,9 +31,7 @@ export class projectsFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.isImageChosed == false) {
-      this.showErrorMSg = true;
-    } else if (this.projectsFormService.form.valid) {
+    if (this.projectsFormService.form.valid) {
       //on add a service
       if (this.title === "Add New Project") {
         this.upload("Add");
@@ -53,7 +51,10 @@ export class projectsFormComponent implements OnInit {
     this.imageToUpload = files.item(0);
     console.log("this.imageToUpload", this.imageToUpload);
     this.isImageChosed = this.isImageChosed == true ? false : true;
-    this.showErrorMSg = false;
+    if (this.imageToUpload) this.showErrorMSg = false;
+    else if (!this.imageToUpload) {
+      this.showErrorMSg = true;
+    }
   }
 
   upload(type: string) {

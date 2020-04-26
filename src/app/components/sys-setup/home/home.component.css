@@ -14,3 +14,11 @@ div.imageContainer {
   display: block;
   margin: auto;
 }
+/****  Cancel button ***/
+.cancel {
+  margin-left: 2em;
+}
+.cancel,
+.submit {
+  margin-top: 1em;
+}

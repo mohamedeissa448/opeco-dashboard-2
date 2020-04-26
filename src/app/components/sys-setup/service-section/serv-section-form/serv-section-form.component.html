@@ -1,4 +1,15 @@
-<h2 mat-dialog-title>{{ title }}</h2>
+<mat-toolbar
+  ><h2 mat-dialog-title>{{ title }}</h2>
+  <span class="fill-remainig-space"></span>
+  <button
+    class="btn-dialog-close"
+    mat-stroked-button
+    (click)="onClose()"
+    tabindex="-1"
+  >
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-toolbar>
 <form [formGroup]="sectionServicesFormService.form" (ngSubmit)="onSubmit()">
   <mat-dialog-content>
     <img
@@ -35,8 +46,8 @@
         (change)="handleImageFileInput($event.target.files)"
       />
       <label class="custom-file-label" for="customFile">
-        <p *ngIf="isImageChosed == false">choose an image:</p>
-        <p *ngIf="isImageChosed == true">
+        <p *ngIf="!this.imageToUpload">choose an image:</p>
+        <p *ngIf="this.imageToUpload">
           Image chosed is: {{ this.imageToUpload.name }}
         </p>
       </label>
@@ -52,7 +63,7 @@
       mat-primary
       type="submit"
       [disabled]="
-        sectionServicesFormService.form.invalid && isImageChosed == true
+        sectionServicesFormService.form.invalid && !this.imageToUpload
       "
     >
       Submit

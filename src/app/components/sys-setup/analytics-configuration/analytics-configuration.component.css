@@ -11,3 +11,11 @@ form {
 textarea {
   width: 80%;
 }
+/****  Cancel button ***/
+.cancel {
+  margin-left: 2em;
+}
+.cancel,
+.submit {
+  margin-top: 1em;
+}

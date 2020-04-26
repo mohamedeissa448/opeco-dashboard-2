@@ -24,9 +24,9 @@ import { AboutUsComponent } from "./about-us/about-us.component";
 import { serviceSectionComponent } from "./service-section/service-section.component";
 import { serviceSectionFormComponent } from "./service-section/serv-section-form/serv-section-form.component";
 import { projectsFormComponent } from "./projects/projects-form/projects-form.component";
-import { ContactComponent } from './contact/contact.component';
-import { AnalyticsConfigurationComponent } from './analytics-configuration/analytics-configuration.component';
-
+import { ContactComponent } from "./contact/contact.component";
+import { AnalyticsConfigurationComponent } from "./analytics-configuration/analytics-configuration.component";
+import { MatToolbarModule } from "@angular/material/toolbar";
 @NgModule({
   imports: [
     BrowserModule,
@@ -48,7 +48,8 @@ import { AnalyticsConfigurationComponent } from './analytics-configuration/analy
     ReactiveFormsModule,
     HttpClientModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule
   ],
   declarations: [
     AboutUsComponent,

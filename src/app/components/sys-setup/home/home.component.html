@@ -32,8 +32,8 @@
             (change)="handleFileInput($event.target.files)"
           />
           <label class="custom-file-label" for="customFile">
-            <p *ngIf="isImageChosed == false">choose another image:</p>
-            <p *ngIf="isImageChosed == true">
+            <p *ngIf="!this.fileToUpload">choose another image:</p>
+            <p *ngIf="this.fileToUpload">
               Image chosed is: {{ this.fileToUpload.name }}
             </p>
           </label>
@@ -42,12 +42,20 @@
           Please,provide an image
         </p>
         <button
-          class="btn btn-primary"
+          class="btn btn-primary submit"
           (click)="uploadFileToActivity()"
           [disabled]="f.invalid"
         >
           Submit
         </button>
+        <a
+          class="btn btn-danger cancel"
+          type="button"
+          status="success"
+          routerLink="/dashboard/index"
+        >
+          Cancel
+        </a>
       </form>
     </div>
   </div>

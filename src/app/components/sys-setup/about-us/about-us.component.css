@@ -19,3 +19,34 @@ div.imageContainer {
 .pdfContainer a:hover {
   color: #49c5b6;
 }
+/****  Cancel button ***/
+.cancel {
+  margin-left: 2em;
+}
+.cancel,
+.submit {
+  margin-top: 1em;
+}
+/********inline image*****/
+div.imageContainer {
+  width: 70%;
+  text-align: center;
+}
+.inline-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 200px;
+  margin-bottom: 2em;
+}
+@media (max-width: 992px) {
+  div.imageContainer {
+    margin: auto;
+  }
+}
+/******** inline pdf ****/
+.inline-pdf {
+  text-align: center;
+  width: 70%;
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
