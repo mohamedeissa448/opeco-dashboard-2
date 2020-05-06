@@ -12,7 +12,7 @@ import { MatSnackBarConfig } from "@angular/material";
 export class ContactComponent implements OnInit {
   imageToUpload: File = null;
   isImageChosed: boolean = false;
-  contact: object = {};
+  contact: any;
   serverUrl: string = "";
   constructor(
     private contactService: ContactService,

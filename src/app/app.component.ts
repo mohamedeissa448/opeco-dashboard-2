@@ -33,7 +33,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
   public smallScreenMenu = "";
   public darkClass: string = "";
   private ngUnsubscribe = new Subject();
-  private isAuthenticated = false;
+  public isAuthenticated = false;
   constructor(
     private sidebarService: SidebarService,
     private router: Router,

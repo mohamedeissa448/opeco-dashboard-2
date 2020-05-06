@@ -8,7 +8,7 @@ import { AuthService } from "../services/auth.service";
   styleUrls: ["./page-login.component.css"]
 })
 export class PageLoginComponent {
-  private invalidLogIn = false;
+  invalidLogIn = false;
   constructor(
     private router: Router,
     private authService: AuthService,

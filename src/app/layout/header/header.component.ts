@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
   PageName: any;
   PageSubName: any;
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private config: NgbDropdownConfig,
     private themeService: ThemeService,
     private sidebarService: SidebarService,

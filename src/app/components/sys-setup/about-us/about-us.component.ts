@@ -14,7 +14,7 @@ export class AboutUsComponent implements OnInit {
   isImageChosed: boolean = false;
   isPdfChosed: boolean = false;
   serverUrl: String;
-  aboutUs: object = {};
+  aboutUs: any;
 
   constructor(
     private aboutUsService: AboutUsService,
